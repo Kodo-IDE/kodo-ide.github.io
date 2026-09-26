@@ -1,4 +1,8 @@
 # Kodo-Website
-The website for the Kodo code editor!
+The website for the Kodo IDE!
 
-By SS-YYC & KerbalMissile.
+Built by SS-YYC & KerbalMissile.
+
+All badges and logos displayed on this website are trademarks of their respective owners.
+
+Licensed under the GNU GPL-v3.0.
