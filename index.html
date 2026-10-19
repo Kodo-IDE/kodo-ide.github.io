@@ -643,6 +643,17 @@
     line-height: 1.4;
   }
 
+  /* Inline emphasis inside step descriptions */
+
+  .step-text span strong {
+    display: inline;
+
+    margin-bottom: 0;
+
+    font-size: inherit;
+    font-weight: 600;
+  }
+
   .step-text span {
     color: var(--muted);
 
@@ -963,7 +974,7 @@
       <li><a href="https://discord.gg/cUQ6C88Z9C" target="_blank">Discord</a></li>
     </ul>
     <div class="nav-right">
-      <span class="version-badge" id="version-badge">loading...</span>
+      <span class="version-badge" id="version-badge">latest</span>
     </div>
   </nav>
 
@@ -971,7 +982,7 @@
   <section class="hero">
     <p class="hero-tag">FOSS IDE</p>
     <h1 class="fade-in">Code fast.<br>Stay <span>light.</span></h1>
-    <p class="fade-in">Kodo is a fast, lightweight code editor built by KerbalMissile and SS-YYC. Open a file or folder, install language support and themes from the marketplace, and keep moving with tabs, autosave, Insight code prediction, Build/Run support, and a built-in terminal.</p>
+    <p class="fade-in">Kodo is a fast, lightweight code editor built by KerbalMissile and SS-YYC. Available on Windows and Linux (x64 / ARM64). Open a file or folder, install language support and themes from the marketplace, and keep moving with tabs, autosave, Insight code prediction, Build/Run support, and a built-in terminal.</p>
     <div class="hero-buttons">
       <a class="btn btn-primary" id="download-btn" href="#" onclick="return false;">
         Download
@@ -995,7 +1006,7 @@
         <div class="feature">
         <div class="feature-icon">//</div>
         <h3>Insight</h3>
-        <p>Kodo's smart assistant - powered by .kox extensions - predicts code, highlights unused code, and detects errors. Fully customizable per file type from a dedicated settings panel.</p>
+        <p>Kodo's smart assistant - powered by .kox extensions - predicts code, highlights unused code, and detects errors. Supported extensions can also add language-server completion, diagnostics, and hover info.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">[]</div>
@@ -1025,12 +1036,12 @@
       <div class="feature">
         <div class="feature-icon">&#x27F3;</div>
         <h3>Background Auto-Updates</h3>
-        <p>Kodo checks GitHub releases on its own and keeps both the editor and your installed extensions current without getting in your way.</p>
+        <p>Kodo checks GitHub releases on its own and keeps both the editor and your installed extensions current without getting in your way. Small verified hotfixes arrive independently of full releases, with rollback support.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">&#x25A3;</div>
-        <h3>Image Preview</h3>
-        <p>Open image files right inside the editor and zoom in without switching to another app.</p>
+        <h3>Linux Support</h3>
+        <p>Native Linux builds for x64 and ARM64 with proper terminal support via Unix PTYs, plus a cross-platform updater with hotfix delivery.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">&#x25C9;</div>
@@ -1080,7 +1091,7 @@
       <div>
         <p class="section-label">Extensions</p>
         <h2>Language support and themes that fit your stack</h2>
-        <p>Kodo loads syntax highlighting, themes, compilers, and now UI and C# code through `.kox` extensions, with marketplace browsing built right into the app. Open a file, install what you need, and let Kodo match the right highlighting and Insight suggestions automatically.</p>
+        <p>Kodo loads syntax highlighting, themes, compilers, and now UI and C# code through <code>.kox</code> extensions. Extensions v2.0.0 is a complete overhaul of the framework: extensions can define their own language intelligence rules, tap into language servers for completion and diagnostics, and override parts of Kodo's behaviour.</p>
         <a class="btn btn-secondary" href="https://github.com/Kodo-IDE/Kodo-Extensions/tree/main/Indexs" target="_blank">Browse official extensions</a>
       </div>
       <div class="dialog-card">
@@ -1088,7 +1099,7 @@
           <span class="dialog-pill"></span>
           <span class="dialog-title">Install Extensions</span>
         </div>
-        <p class="dialog-body">Language support adds highlighting, Insight predictions, and build detection for covered files.</p>
+        <p class="dialog-body">Language support adds highlighting, Insight predictions, and build detection for covered files. Extensions v2.0.0 can also ship <code>LangRules.cs</code> for custom intelligence.</p>
         <div class="code-block">
 <span class="c-com">// manifest.json inside a .kox file</span>
 {
@@ -1116,26 +1127,33 @@
       <div class="step">
         <span class="step-num">01</span>
         <div class="step-text">
-          <strong>Download the installer</strong>
-          <span>Grab the latest release from GitHub. Kodo is currently built for Windows x64.</span>
+          <strong>Download for your platform</strong>
+          <span>Grab the latest release from GitHub. Kodo is available for <strong>Windows x64</strong> and <strong>Linux x64 / ARM64</strong>.</span>
         </div>
       </div>
       <div class="step">
         <span class="step-num">02</span>
         <div class="step-text">
-          <strong>Run the installer</strong>
-          <span>Install Kodo, launch it, and get started.</span>
+          <strong>Windows: run the installer</strong>
+          <span>Run the <code>.exe</code> installer and follow the prompts. To update, run the newer installer.</span>
         </div>
       </div>
       <div class="step">
         <span class="step-num">03</span>
+        <div class="step-text">
+          <strong>Linux: extract and launch</strong>
+          <span>Extract the <code>.tar.gz</code> archive, or use the <code>.AppImage</code> / <code>.deb</code> package. Launch the included <code>Kodo</code> executable.</span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">04</span>
         <div class="step-text">
           <strong>Add your stack</strong>
           <span>Open the marketplace to install language support and themes, or drop in your own <code>.kox</code> extensions.</span>
         </div>
       </div>
       <div class="step">
-        <span class="step-num">04</span>
+        <span class="step-num">05</span>
         <div class="step-text">
           <strong>Open a folder and start coding</strong>
           <span>Use the file explorer, tabs, autosave, and terminal to settle into your normal workflow right away.</span>
@@ -1176,6 +1194,17 @@
   <script>
     function pickInstaller(release) {
       const assets = (release && release.assets) || [];
+      const isLinux = /linux/i.test(navigator.userAgent);
+      const isArm64 = /arm64|aarch64/i.test(navigator.userAgent);
+      if (isLinux) {
+        const arch = isArm64 ? 'ARM64' : 'x64';
+        return assets.find(a => new RegExp(`Linux-${arch}.*\\.tar\\.gz$`, 'i').test(a.name))
+            || assets.find(a => new RegExp(`Linux-${arch}.*\\.AppImage$`, 'i').test(a.name))
+            || assets.find(a => new RegExp(`Linux-${arch}.*\\.deb$`, 'i').test(a.name))
+            || assets.find(a => /Linux.*\.tar\.gz$/i.test(a.name))
+            || assets.find(a => /Linux.*\.AppImage$/i.test(a.name))
+            || assets.find(a => /Linux.*\.deb$/i.test(a.name));
+      }
       return assets.find(a => /-Installer\.exe$/i.test(a.name))
           || assets.find(a => /\.exe$/i.test(a.name))
           || assets[0];
@@ -1189,7 +1218,7 @@
         btn.removeAttribute('target');
         btn.removeAttribute('onclick');
       } else {
-        btn.title = 'No installer available yet';
+        btn.title = 'No download available for your platform yet';
         btn.classList.add('disabled');
         btn.onclick = () => window.open('https://github.com/Kodo-IDE/Kodo/releases', '_blank');
       }
@@ -1206,7 +1235,7 @@
           badge.onclick = () => window.open(release.html_url, '_blank');
           attachDownload(release);
         } else {
-          badge.textContent = 'pre-release';
+          badge.textContent = 'latest';
           badge.style.cursor = 'pointer';
           badge.onclick = () => window.open('https://github.com/Kodo-IDE/Kodo/releases', '_blank');
           attachDownload(null);
@@ -1214,7 +1243,7 @@
       })
       .catch(() => {
         const badge = document.getElementById('version-badge');
-        badge.textContent = 'pre-release';
+        badge.textContent = 'latest';
         badge.style.cursor = 'pointer';
         badge.onclick = () => window.open('https://github.com/Kodo-IDE/Kodo/releases', '_blank');
         attachDownload(null);
