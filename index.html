@@ -6,18 +6,6 @@
   <title>Kodo | Lightweight IDE</title>
   <link rel="icon" href="https://raw.githubusercontent.com/Kodo-IDE/Kodo/main/kodo_logo.png" type="image/png" />
 <style>
-  /*
-   * Kodo Design Language
-   *
-   * Typography:
-   *   UI       — Inter
-   *   Code     — Cascadia Code / Cascadia Mono
-   *   Symbols  — Segoe UI Symbol / Segoe UI Emoji
-   *
-   * Kodo uses Avalonia.Fonts.Inter 12.1.1.
-   * Avalonia's package uses a static Inter font collection rather
-   * than a variable font.
-   */
 
   :root {
     /* ===== Color System ===== */
@@ -982,7 +970,7 @@
   <section class="hero">
     <p class="hero-tag">FOSS IDE</p>
     <h1 class="fade-in">Code fast.<br>Stay <span>light.</span></h1>
-    <p class="fade-in">Kodo is a fast, lightweight code editor built by KerbalMissile and SS-YYC. Available on Windows and Linux (x64 / ARM64). Open a file or folder, install language support and themes from the marketplace, and keep moving with tabs, autosave, Insight code prediction, Build/Run support, and a built-in terminal.</p>
+    <p class="fade-in">Kodo is a fast, lightweight code editor built by KerbalMissile and SS-YYC. Available on Windows and Linux (x64 / ARM64). Open a file or folder, split your editor, use native Git Source Control, and keep moving with the command palette, minimap, language support, Build/Run, and a built-in terminal.</p>
     <div class="hero-buttons">
       <a class="btn btn-primary" id="download-btn" href="#" onclick="return false;">
         Download
@@ -1011,7 +999,27 @@
       <div class="feature">
         <div class="feature-icon">[]</div>
         <h3>Marketplace + Local Extensions</h3>
-        <p>Browse languages, themes, and compilers inside the app, or drop in your own .kox files. Extensions can now add UI elements and C# code.</p>
+        <p>Browse languages, themes, and compilers inside the app, or drop in your own .kox files. Plugins can add UI and register commands in the command palette.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">⌘</div>
+        <h3>Command Palette</h3>
+        <p>Find files, run editor commands, jump to lines and symbols, and call commands contributed by plugins.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">↔</div>
+        <h3>Split Editor</h3>
+        <p>Keep two files open side by side with separate editor groups and pane-aware tabs.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">⌁</div>
+        <h3>Native Git</h3>
+        <p>Review and manage repository changes from Kodo's Git Source Control integration. Turn it on or off in Integrations Settings.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">▤</div>
+        <h3>Editor Minimap</h3>
+        <p>See a compact map of your file and scroll through it to move around quickly.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">&#x25BA;</div>
@@ -1091,7 +1099,7 @@
       <div>
         <p class="section-label">Extensions</p>
         <h2>Language support and themes that fit your stack</h2>
-        <p>Kodo loads syntax highlighting, themes, compilers, and now UI and C# code through <code>.kox</code> extensions. Extensions v2.0.0 is a complete overhaul of the framework: extensions can define their own language intelligence rules, tap into language servers for completion and diagnostics, and override parts of Kodo's behaviour.</p>
+        <p>Kodo loads syntax highlighting, themes, compilers, and UI integrations through <code>.kox</code> extensions. Language extensions can provide language intelligence and connect to language servers; plugins can add UI and register commands that appear in Kodo's command palette.</p>
         <a class="btn btn-secondary" href="https://github.com/Kodo-IDE/Kodo-Extensions/tree/main/Indexs" target="_blank">Browse official extensions</a>
       </div>
       <div class="dialog-card">
